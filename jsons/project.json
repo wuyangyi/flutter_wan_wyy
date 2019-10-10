@@ -1,0 +1,36 @@
+{
+  "apkLink": "",
+  "audit": 1,
+  "author": "xuexiangjys",
+  "chapterId": 294,
+  "chapterName": "完整项目",
+  "collect": false,
+  "courseId": 13,
+  "desc": "一个简洁而又优雅的Android原生UI框架，解放你的双手！还不赶紧点击使用说明文档，体验一下吧！",
+  "envelopePic": "https://wanandroid.com/blogimgs/df78f4d6-94c6-4ed8-8b96-999f57a84262.png",
+  "fresh": false,
+  "id": 9494,
+  "link": "https://www.wanandroid.com/blog/show/2680",
+  "niceDate": "ssss2019s10s05",
+  "niceShareDate": "ssss2019s10s05",
+  "origin": "",
+  "prefix": "",
+  "projectLink": "https://github.com/xuexiangjys/XUI",
+  "publishTime": 1570252145000,
+  "selfVisible": 0,
+  "shareDate": 1570252145000,
+  "shareUser": "",
+  "superChapterId": 294,
+  "superChapterName": "开源项目主Tab",
+  "tags": [
+    {
+      "name": "项目",
+      "url": "/project/list/1?cid=294"
+    }
+  ],
+  "title": "XUI 一个简洁而优雅的Android原生UI框架，解放你的双手！",
+  "type": 0,
+  "userId": -1,
+  "visible": 1,
+  "zan": 0
+}

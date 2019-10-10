@@ -1,0 +1,9 @@
+{
+  "token":"",
+  "theme":5678,
+  "user": "$user",
+  "cache":"$cacheConfig",
+  "lastLogin":"",
+  "locale":"",
+  "isLogin":false
+}
