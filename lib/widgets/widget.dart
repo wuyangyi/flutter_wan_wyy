@@ -95,7 +95,7 @@ class StatusViews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (status) {
-      case Status.fail:
+      case Status.fail: //失败  显示网络异常
         return new Container(
           width: double.infinity,
           child: new Material(
@@ -128,14 +128,14 @@ class StatusViews extends StatelessWidget {
           ),
         );
         break;
-      case Status.loading:
+      case Status.loading: //加载中
         return new Container(
           alignment: Alignment.center,
           color: Colours.gray_f0,
           child: new ProgressView(),
         );
         break;
-      case Status.empty:
+      case Status.empty: //为空
         return new Container(
           color: Colors.white,
           width: double.infinity,

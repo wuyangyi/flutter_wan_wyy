@@ -15,6 +15,8 @@ class Ids {
   static const String userAgreement = "user_agreement";
   static const String collect = 'collect';
 
+  static const String loading = "loading";
+
 //  static const String titleBookmarks = 'title_bookmarks';
 //  static const String titleCollection = 'title_collection';
 //  static const String titleSetting = 'title_setting';
@@ -68,6 +70,7 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.flutterProject: "A flutter project",
     Ids.userAgreement: "User Agreement",
     Ids.collect: "Collect",
+    Ids.loading: "Loading",
   },
   'zh': {
     Ids.titleHome: '主页',
@@ -80,6 +83,7 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.flutterProject: "一个flutter项目",
     Ids.userAgreement: "用户协议",
     Ids.collect: "收藏",
+    Ids.loading: "加载中",
   },
 };
 //

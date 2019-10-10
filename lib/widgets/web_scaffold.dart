@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wan_wyy/utils/intl_util.dart';
 import 'package:flutter_wan_wyy/utils/navigator_util.dart';
 import 'package:flutter_wan_wyy/utils/style.dart';
+import 'package:flutter_wan_wyy/widgets/widget.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:share/share.dart';
 
@@ -26,9 +27,9 @@ class WebScaffold extends StatefulWidget {
 }
 
 class WebScaffoldState extends State<WebScaffold> {
-//  WebViewController _webViewController;
+  WebViewController _webViewController;
 //  bool _isShowFloatBtn = false;
-
+  int loadStatus = Status.loading;
   void _onPopSelected(String value) {
     String _title = widget.title ?? IntlUtil.getString(context, widget.titleId);
     switch (value) {
@@ -135,9 +136,11 @@ class WebScaffoldState extends State<WebScaffold> {
                   ])
         ],
       ),
-      body: new WebView(
-        onWebViewCreated: (WebViewController webViewController) {
-//          _webViewController = webViewController;
+      body: Stack(
+        children: <Widget>[
+          new WebView(
+            onWebViewCreated: (WebViewController webViewController) {
+          _webViewController = webViewController;
 //          _webViewController.addListener(() {
 //            int _scrollY = _webViewController.scrollY.toInt();
 //            if (_scrollY < 480 && _isShowFloatBtn) {
@@ -148,12 +151,26 @@ class WebScaffoldState extends State<WebScaffold> {
 //              setState(() {});
 //            }
 //          });
-        },
-        initialUrl: widget.url,
-        javascriptMode: JavascriptMode.unrestricted,
-        onPageFinished: (String e) {
-          print("onPageFinished：111");
-        },
+            },
+            initialUrl: widget.url,
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageFinished: (String e) {
+              print("webview：${widget.url} 数据：$e");
+              setState(() {
+                loadStatus = (e == "about:blank" ? Status.fail : Status.success);
+              });
+            },
+          ),
+          new StatusViews(
+            loadStatus,
+            onTap: () {
+              setState(() {
+                _webViewController.loadUrl(widget.url);
+                loadStatus = Status.loading;
+              });
+            },
+          ),
+        ],
       ),
 //      floatingActionButton: _buildFloatingActionButton(),
     );
