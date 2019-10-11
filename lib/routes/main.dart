@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_wan_wyy/blocs/bloc_provider.dart';
 import 'package:flutter_wan_wyy/blocs/main_bloc.dart';
+import 'package:flutter_wan_wyy/blocs/user_bloc.dart';
 import 'package:flutter_wan_wyy/res/strings.dart';
 import 'package:flutter_wan_wyy/routes/register.dart';
 import 'package:flutter_wan_wyy/routes/setting.dart';
 import 'package:flutter_wan_wyy/routes/user_agreement.dart';
+import 'package:flutter_wan_wyy/routes/user_center.dart';
 import 'package:flutter_wan_wyy/utils/global.dart';
 import 'package:flutter_wan_wyy/utils/profilechangenotifier.dart';
 import 'package:flutter_wan_wyy/utils/style.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_wan_wyy/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import 'about_us.dart';
+import 'chess.dart';
 import 'collect.dart';
 import 'home.dart';
 import 'language.dart';
@@ -80,7 +83,9 @@ class MyApp extends StatelessWidget {
               "language": (context) => LanguageRoute(), ///语言
               "aboutUs": (context) => AboutUsRoute(), ///关于
               Ids.userAgreement: (context) => UserAgreementRoute(), ///用户协议
-              Ids.collect: (context) => CollectRoute(), //收藏
+//              Ids.collect: (context) => CollectRoute(), //收藏
+              Ids.userCenter: (context) => BlocProvider(child: UserCenterRoute(), bloc: UserBloc(),), //用户中心
+              Ids.gomokuGame: (context) => ChessPage(), //五指棋游戏
             },
           );
         },

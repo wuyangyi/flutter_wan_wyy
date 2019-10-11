@@ -155,17 +155,20 @@ class RegisterRouteState extends State<RegisterRoute> {
       Util.showSnackBar(context, gm.input_sure_pwd_diff);
       return;
     }
-    showLoadingDialog(context, gm.registering);
-    User user = await NetClickUtil(context).register(new UserRegister(username, password, surepwd));
-    Navigator.of(context).pop();
-    if (user != null) {
-      Global.profile.isLogin = true;
-      Global.saveProfile(); //保存信息
-      Util.showSnackBar(context, gm.loginSuccess + "~");
-      Future.delayed(Duration(seconds: 1)).then((e) { //等待1s后关闭
-        Navigator.of(context).pop(true);
-      });
-    }
+    showLoadingDialog(context, message: gm.registering, doLoading: () async {
+      User user = await NetClickUtil(context).register(new UserRegister(username, password, surepwd));
+//    Navigator.of(context).pop();
+      if (user != null) {
+        Global.profile.isLogin = true;
+        Global.saveProfile(); //保存信息
+        Util.showSnackBar(context, gm.loginSuccess + "~");
+        Future.delayed(Duration(seconds: 1)).then((e) { //等待1s后关闭
+          Navigator.of(context).pop(true);
+        });
+      }
+      return true;
+    });
+
   }
 
 }

@@ -36,6 +36,12 @@ class TextStyles {
     fontSize: Dimens.font_sp12,
     color: Colours.hint_color,
   );
+
+  static TextStyle loadingText = TextStyle(
+    fontSize: Dimens.font_sp14,
+    color: Colors.white,
+    decoration: TextDecoration.none, //去掉双下划线
+  );
 }
 //  间隔
 class Gaps {
@@ -87,6 +93,7 @@ class Dimens {
   static const double gap_dp50 = 50.0;
   static const double gap_dp60 = 60.0;
   static const double gap_dp80 = 80.0;
+  static const double user_top_height = 200.0;
 
 
   static const double font_sp12 = 12.0;

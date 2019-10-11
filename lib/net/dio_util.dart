@@ -60,6 +60,7 @@ class HttpUtils {
       if (SpUtil.getString(BaseConstant.keyAppToken) != null) {
         Map<String, dynamic> _headers = new Map();
         _headers["Cookie"] = SpUtil.getString(BaseConstant.keyAppToken);
+        print("传过去的cookie:${_headers["Cookie"]}");
         dio.options.headers.addAll(_headers);
       }
       Response response = await dio.request(url, data: data, options: new Options(method: method));
@@ -70,6 +71,7 @@ class HttpUtils {
         if (name == "set-cookie") {
           String cookie = values.toString();
           SpUtil.putString(BaseConstant.keyAppToken, cookie);
+          print("获得的cookie:$cookie");
         }
       });
 

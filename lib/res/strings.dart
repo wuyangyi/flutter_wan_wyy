@@ -14,8 +14,24 @@ class Ids {
   static const String about = 'about';
   static const String userAgreement = "user_agreement";
   static const String collect = 'collect';
+  static const String userCenter = "user_center";
+
+  static const String myCollect = 'my_collect';
+  static const String myIntegral = 'my_integral';
 
   static const String loading = "loading";
+  static const String building = "building";
+
+  static const String hint = "hint";
+  static const String dropOut = "drop_out";
+  static const String sure = "sure";
+  static const String cancel = "cancel";
+  static const String blackWin = "black_win";
+  static const String whiteWin = "white_win";
+  static const String restart = "restart";
+  static const String blackChess = "black_chess";
+  static const String whiteChess = "white_chess";
+  static const String gomokuGame = "gomoku_game";
 
 //  static const String titleBookmarks = 'title_bookmarks';
 //  static const String titleCollection = 'title_collection';
@@ -71,6 +87,19 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.userAgreement: "User Agreement",
     Ids.collect: "Collect",
     Ids.loading: "Loading",
+    Ids.building: "Under Construction~",
+    Ids.myCollect: "My Collection",
+    Ids.myIntegral: "My Scores",
+    Ids.hint: "prompt",
+    Ids.dropOut: "Do you wang to quit the game?",
+    Ids.sure: "sure",
+    Ids.cancel: "cancel",
+    Ids.blackWin: "Black chess wins",
+    Ids.whiteWin: "White chess wins",
+    Ids.restart: "Restart",
+    Ids.blackChess: "Black chess",
+    Ids.whiteChess: "White chess",
+    Ids.gomokuGame: "Gomoku game",
   },
   'zh': {
     Ids.titleHome: '主页',
@@ -84,6 +113,19 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.userAgreement: "用户协议",
     Ids.collect: "收藏",
     Ids.loading: "加载中",
+    Ids.building: "正在建设中~",
+    Ids.myCollect: "我的收藏",
+    Ids.myIntegral: "我的积分",
+    Ids.hint: "提示",
+    Ids.dropOut: "是否退出游戏？",
+    Ids.sure: "确定",
+    Ids.cancel: "取消",
+    Ids.blackWin: "黑棋获胜",
+    Ids.whiteWin: "白棋获胜",
+    Ids.restart: "重新开始",
+    Ids.blackChess: "黑棋下棋",
+    Ids.whiteChess: "白棋下棋",
+    Ids.gomokuGame: "五子棋游戏",
   },
 };
 //

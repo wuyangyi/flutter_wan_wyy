@@ -186,18 +186,21 @@ class LoginRouteState extends State<LoginRoute> {
       Util.showSnackBar(context, username.isEmpty ? gm.input_pwd + "～" : gm.input_sex_pwd);
       return;
     }
-    showLoadingDialog(context, gm.logging);
-    User user;
-    user = await NetClickUtil(context).login(new UserReq(username, password));
-    Navigator.of(context).pop();
-    if (user != null) {
-      Global.profile.isLogin = true;
-      Global.saveProfile(); //保存信息
-      Util.showSnackBar(context, gm.loginSuccess + "~");
-      Future.delayed(Duration(seconds: 1)).then((e) { //等待1s后关闭
-        Navigator.of(context).pushReplacementNamed("home");
-      });
-    }
+    showLoadingDialog(context, message: gm.logging, doLoading: () async {
+      User user;
+      user = await NetClickUtil(context).login(new UserReq(username, password));
+//    Navigator.of(context).pop();
+      if (user != null) {
+        Global.profile.isLogin = true;
+        Global.saveProfile(); //保存信息
+        Util.showSnackBar(context, gm.loginSuccess + "~");
+        Future.delayed(Duration(seconds: 1)).then((e) { //等待1s后关闭
+          Navigator.of(context).pushReplacementNamed("home");
+        });
+      }
+      return true;
+    });
+
   }
 
 }

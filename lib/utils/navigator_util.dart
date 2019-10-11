@@ -25,15 +25,15 @@ class NavigatorUtil {
   }
 
   ///打开page
-  static Future<T> pushPage<T extends Object>(BuildContext context, String routeName, {bool needLogin = false, bool isNeedCloseRoute = false}) {
+  static Future<T> pushPage<T extends Object>(BuildContext context, String routeName, {bool needLogin = false, bool isNeedCloseRoute = false, Object arguments}) {
     if(context == null || routeName == null) return null;
     if (needLogin && !Util.isLogin(context)) {
-      return pushPage(context, "login");
+      return Navigator.of(context).pushNamed("login", arguments: true);
     }
     if (isNeedCloseRoute) {
-      return Navigator.of(context).pushReplacementNamed(routeName);
+      return Navigator.of(context).pushReplacementNamed(routeName, arguments: arguments);
     }
-    return Navigator.of(context).pushNamed(routeName);
+    return Navigator.of(context).pushNamed(routeName, arguments: arguments);
   }
 
   static Future<Null> launchInBrowser(String url, {String title}) async {

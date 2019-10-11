@@ -192,34 +192,6 @@ class GmLocalizations {
     return "新用户？";
   }
 
-  String get homePage {
-    if (languageCode == "en") {
-      return "Home";
-    }
-    return "主页";
-  }
-
-  String get project {
-    if (languageCode == "en") {
-      return "Project";
-    }
-    return "项目";
-  }
-
-  String get event {
-    if (languageCode == "en") {
-      return "Events";
-    }
-    return "动态";
-  }
-
-  String get system {
-    if (languageCode == "en") {
-      return "System";
-    }
-    return "体系";
-  }
-
   //设置
   String get setting {
     if (languageCode == "en") {

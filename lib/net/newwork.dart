@@ -26,6 +26,7 @@ class NetClickUtil {
   static String HOME_BANNER = "banner/json";
   static String HOME_LIST = "article/list/";
   static String PROJECT_LIST = "project/list/";
+  static String USER_COLLECT = "lg/collect/list/";
   BuildContext context;
   NetClickUtil([BuildContext context]) {
     this.context = context;
@@ -105,6 +106,20 @@ class NetClickUtil {
     return project;
   }
 
+
+  ///用户收藏的列表数据
+  Future<List<Project>> getCollectListData(int page) async {
+    var response = await HttpUtils.request(USER_COLLECT + "$page/json" , method: HttpUtils.GET);
+    if (response == null) {
+      return [];
+    }
+    List<Project> project = new List();
+    List data = response["data"]["datas"] as List;
+    for (int i = 0; i < data.length; i++) {
+      project.add(Project.fromJson(data[i]));
+    }
+    return project;
+  }
 
 
 

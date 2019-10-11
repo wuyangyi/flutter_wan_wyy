@@ -61,6 +61,8 @@ class MainBloc implements BlocBase {
   void dispose() {
     _project.close();
     _homeEvent.close();
+    _homeData.close();
+    _banner.close();
   }
 
   @override

@@ -6,6 +6,8 @@ import 'package:flutter_wan_wyy/res/strings.dart';
 import 'package:flutter_wan_wyy/routes/project.dart';
 import 'package:flutter_wan_wyy/utils/dialog.dart';
 import 'package:flutter_wan_wyy/utils/global.dart';
+import 'package:flutter_wan_wyy/utils/intl_util.dart';
+import 'package:flutter_wan_wyy/utils/navigator_util.dart';
 import 'package:flutter_wan_wyy/utils/profilechangenotifier.dart';
 import 'package:flutter_wan_wyy/utils/style.dart';
 import 'package:flutter_wan_wyy/utils/utils.dart';
@@ -14,10 +16,9 @@ import 'package:provider/provider.dart';
 import 'home_page.dart';
 
 class Page {
-  final String title;
   final String id;
 
-  Page(this.id, this.title);
+  Page(this.id);
 }
 
 ///首页
@@ -37,10 +38,10 @@ class HomeRouteState extends State<HomeRoute> {
     GmLocalizations gm = GmLocalizations.of(context);
 //    UserModel userModel = Provider.of<UserModel>(context);
     tabs = <Page>[
-      new Page(Ids.titleHome, gm.homePage),
-      new Page(Ids.titleProject, gm.project),
-      new Page(Ids.titleEvents, gm.event),
-      new Page(Ids.titleSystem, gm.system),
+      new Page(Ids.titleHome),
+      new Page(Ids.titleProject),
+      new Page(Ids.titleEvents),
+      new Page(Ids.titleSystem),
     ];
     return DefaultTabController(
       length: tabs.length,
@@ -77,10 +78,10 @@ class HomeRouteState extends State<HomeRoute> {
           ],
           centerTitle: true,
           title: TabBar(
-            isScrollable: true,
+            isScrollable: true, //可滚动
             labelPadding: EdgeInsets.all(12.0),
             indicatorSize: TabBarIndicatorSize.label,
-            tabs: tabs.map((e) => Tab(text: e.title)).toList(),
+            tabs: tabs.map((e) => Tab(text: IntlUtil.getString(context, e.id))).toList(),
 
           ),
         ),
@@ -111,7 +112,7 @@ class HomeRouteState extends State<HomeRoute> {
       default:
         return Container(
           alignment: Alignment.center,
-          child: Text(page.title),
+          child: Text(IntlUtil.getString(context, page.id)),
         );
         break;
     }
@@ -181,7 +182,7 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           onTap: () {
-            if (!Util.isLogin(context)) Navigator.of(context).pushNamed("login", arguments: true);
+            NavigatorUtil.pushPage(context, Ids.userCenter, needLogin: true);
           },
         );
       },
@@ -201,15 +202,20 @@ class MyDrawer extends StatelessWidget {
               title: Text(gm.setting),
               onTap: () => Navigator.pushNamed(context, "setting"),
             ),
-            ListTile(
-              leading: const Icon(Icons.collections),
-              title: Text(gm.collect),
-              onTap: () => Navigator.pushNamed(context, Ids.collect),
-            ),
+//            ListTile(
+//              leading: const Icon(Icons.collections),
+//              title: Text(gm.collect),
+//              onTap: () => Navigator.pushNamed(context, Ids.collect),
+//            ),
             ListTile(
               leading: const Icon(Icons.error_outline),
               title: Text(gm.about),
               onTap: () => Navigator.pushNamed(context, "aboutUs"),
+            ),
+            ListTile(
+              leading: const Icon(Icons.videogame_asset),
+              title: Text(IntlUtil.getString(context, Ids.gomokuGame)),
+              onTap: () => NavigatorUtil.pushPage(context, Ids.gomokuGame),
             ),
             Util.isLogin(context) ?
             ListTile(
