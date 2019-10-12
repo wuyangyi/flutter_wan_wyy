@@ -1,0 +1,19 @@
+{
+  "children": [{
+    "children": [],
+    "courseId": 13,
+    "id": 168,
+    "name": "Drawable",
+    "order": 5000,
+    "parentChapterId": 167,
+    "userControlSetTop": false,
+    "visible": 1
+  }],
+  "courseId": 13,
+  "id": 60,
+  "name": "Android Studio相关",
+  "order": 1000,
+  "parentChapterId": 150,
+  "userControlSetTop": false,
+  "visible": 1
+}

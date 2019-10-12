@@ -4,6 +4,7 @@ import 'package:flutter_wan_wyy/bean/user_info.dart';
 import 'package:flutter_wan_wyy/net/newwork.dart';
 import 'package:flutter_wan_wyy/res/strings.dart';
 import 'package:flutter_wan_wyy/routes/project.dart';
+import 'package:flutter_wan_wyy/routes/system.dart';
 import 'package:flutter_wan_wyy/utils/dialog.dart';
 import 'package:flutter_wan_wyy/utils/global.dart';
 import 'package:flutter_wan_wyy/utils/intl_util.dart';
@@ -106,9 +107,9 @@ class HomeRouteState extends State<HomeRoute> {
 //      case Ids.titleEvents:
 //        return EventsPage(page);
 //        break;
-//      case Ids.titleSystem:
-//        return SystemPage(page);
-//        break;
+      case Ids.titleSystem:
+        return SystemRoute(page);
+        break;
       default:
         return Container(
           alignment: Alignment.center,

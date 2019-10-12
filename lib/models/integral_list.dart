@@ -8,6 +8,8 @@ class IntegralList {
 
   num coinCount;
 
+  num date;
+
   String desc;
 
   num id;

@@ -5,6 +5,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter_wan_wyy/event/event.dart';
 import 'package:flutter_wan_wyy/models/banner_module.dart';
 import 'package:flutter_wan_wyy/models/project.dart';
+import 'package:flutter_wan_wyy/models/system.dart';
 import 'package:flutter_wan_wyy/net/newwork.dart';
 import 'package:flutter_wan_wyy/res/strings.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -44,6 +45,17 @@ class MainBloc implements BlocBase {
   List<Project> _projectList;
   int _projectPage = 1;
   ///**** ****** ***** project **** ***** ****///
+  ///
+  ///**** ****** ***** system **** ***** ****///
+  // ignore: close_sinks
+  BehaviorSubject<List<System>> _system = BehaviorSubject<List<System>>();
+
+  Sink<List<System>> get _systemSink => _system.sink;
+
+  Stream<List<System>> get systemStream => _system.stream;
+
+  List<System> _systemList;
+  ///**** ****** *****   ///**** ****** ***** system **** ***** ****/// **** ***** ****///
 
 
   ///****** ****** ****** ****** ****** ****** /
@@ -63,10 +75,11 @@ class MainBloc implements BlocBase {
     _homeEvent.close();
     _homeData.close();
     _banner.close();
+    _system.close();
   }
 
   @override
-  Future getData({String labelId, int page, bool isLoadMore}) {
+  Future getData({String labelId, int page, bool isLoadMore}) async {
     switch(labelId) {
       case Ids.titleHome:
         return getHomeListData(labelId, page, isLoadMore);
@@ -77,6 +90,7 @@ class MainBloc implements BlocBase {
       case Ids.titleEvents:
         break;
       case Ids.titleSystem:
+        return getSystemList(labelId);
         break;
     }
   }
@@ -182,6 +196,31 @@ class MainBloc implements BlocBase {
   Future getBanner() async {
     return await NetClickUtil().getBannerData().then((list) {
       _bannerSink.add(UnmodifiableListView<BannerModule>(list));
+    });
+  }
+
+  ///获得体系列表数据
+  Future getSystemList(String labelId) async {
+    return await NetClickUtil().getSystemList().then((list) {
+      if (_systemList == null) {
+        _systemList = new List();
+      }
+      _systemList.clear();
+      _systemList.addAll(list);
+      _systemSink.add(UnmodifiableListView<System>(_systemList));
+
+      homeEventSink.add(new StatusEvent(
+          labelId,
+          ObjectUtil.isEmpty(list)
+              ? LoadStatus.noMore
+              : LoadStatus.idle,
+          false
+      ));
+    }).catchError((_) {
+      if (ObjectUtil.isEmpty(_systemList)) {
+        _system.sink.addError("error");
+      }
+      homeEventSink.add(new StatusEvent(labelId, LoadStatus.failed, false));
     });
   }
 

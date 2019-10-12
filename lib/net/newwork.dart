@@ -12,6 +12,7 @@ import 'package:flutter_wan_wyy/models/banner_module.dart';
 import 'package:flutter_wan_wyy/models/integral_list.dart';
 import 'package:flutter_wan_wyy/models/integral_rank.dart';
 import 'package:flutter_wan_wyy/models/project.dart';
+import 'package:flutter_wan_wyy/models/system.dart';
 import 'package:flutter_wan_wyy/models/user.dart';
 import 'package:flutter_wan_wyy/utils/global.dart';
 import 'package:flutter_wan_wyy/utils/profilechangenotifier.dart';
@@ -32,6 +33,7 @@ class NetClickUtil {
   static String USER_INTEGRAL = "lg/coin/userinfo/json";
   static String USER_INTEGRAL_LIST = "lg/coin/list/";
   static String USER_INTEGRAL_RANK_LIST = "coin/rank/";
+  static String HOME_SYSTEM = "tree/json";
   BuildContext context;
   NetClickUtil([BuildContext context]) {
     this.context = context;
@@ -162,6 +164,20 @@ class NetClickUtil {
       coins.add(IntegralRank.fromJson(data[i]));
     }
     return coins;
+  }
+
+  ///体系
+  Future<List<System>> getSystemList() async {
+    var response = await HttpUtils.request(HOME_SYSTEM , method: HttpUtils.GET);
+    if (response == null) {
+      return [];
+    }
+    List<System> systems = new List();
+    List data = response["data"] as List;
+    for (int i = 0; i < data.length; i++) {
+      systems.add(System.fromJson(data[i]));
+    }
+    return systems;
   }
 
 
