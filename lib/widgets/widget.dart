@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wan_wyy/bean/user_info.dart';
 import 'package:flutter_wan_wyy/blocs/bloc_provider.dart';
 import 'package:flutter_wan_wyy/blocs/main_bloc.dart';
+import 'package:flutter_wan_wyy/res/strings.dart';
+import 'package:flutter_wan_wyy/utils/event_bus.dart';
+import 'package:flutter_wan_wyy/utils/intl_util.dart';
 import 'package:flutter_wan_wyy/utils/profilechangenotifier.dart';
 import 'package:flutter_wan_wyy/utils/style.dart';
 import 'package:flutter_wan_wyy/utils/utils.dart';
@@ -207,24 +210,43 @@ class LikeBtn extends StatelessWidget {
 }
 
 
-class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar child;
-
-  StickyTabBarDelegate({@required this.child});
-
+///可单独刷新改变透明度的textView
+class TextWidget extends StatefulWidget {
+  double _opacity = 0.0; //透明度
+  String text;
+  TextWidget(this._opacity, this.text);
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return this.child;
+  State<StatefulWidget> createState() {
+    return TextWidgetState();
   }
+}
+class TextWidgetState extends State<TextWidget> {
 
   @override
-  double get maxExtent => this.child.preferredSize.height;
-
-  @override
-  double get minExtent => this.child.preferredSize.height;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
+  Widget build(BuildContext context) {
+    bus.on(EventBusId.USER_CENTER_OPACITY, (arg) {
+      setState(() {
+        widget._opacity = arg;
+      });
+    });
+    return Opacity(
+      opacity: widget._opacity,
+      child: Row(
+        //控件里面内容主轴负轴居中显示
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        //主轴高度最小
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            widget.text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 15.0,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

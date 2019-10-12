@@ -28,6 +28,11 @@ class TextStyles {
     color: Colours.title_color,
   );
 
+  static TextStyle titleList = TextStyle(
+    fontSize: Dimens.font_sp15,
+    color: Colours.title_color,
+  );
+
   static TextStyle loginHint = TextStyle(
     fontSize: Dimens.font_sp14,
     color: Colours.hint_color,
@@ -98,6 +103,7 @@ class Dimens {
 
   static const double font_sp12 = 12.0;
   static const double font_sp14 = 14.0;
+  static const double font_sp15 = 15.0;
   static const double font_sp16 = 16.0;
 }
 

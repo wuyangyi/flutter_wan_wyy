@@ -18,6 +18,9 @@ class Ids {
 
   static const String myCollect = 'my_collect';
   static const String myIntegral = 'my_integral';
+  static const String integral = 'integral';
+  static const String integralRank = 'integral_rank';
+  static const String integralRanking = 'integral_ranking';
 
   static const String loading = "loading";
   static const String building = "building";
@@ -32,6 +35,9 @@ class Ids {
   static const String blackChess = "black_chess";
   static const String whiteChess = "white_chess";
   static const String gomokuGame = "gomoku_game";
+
+  static const String agreement = "agreement";
+  static const String agreementContent = "agreement_content";
 
 //  static const String titleBookmarks = 'title_bookmarks';
 //  static const String titleCollection = 'title_collection';
@@ -90,6 +96,7 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.building: "Under Construction~",
     Ids.myCollect: "My Collection",
     Ids.myIntegral: "My Scores",
+    Ids.integral: "Scores",
     Ids.hint: "prompt",
     Ids.dropOut: "Do you wang to quit the game?",
     Ids.sure: "sure",
@@ -100,6 +107,11 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.blackChess: "Black chess",
     Ids.whiteChess: "White chess",
     Ids.gomokuGame: "Gomoku game",
+    Ids.integralRank: "Ranking",
+    Ids.integralRanking: "Leaderboard",
+    Ids.agreement: "Product introduction and privacy agreement",
+    Ids.agreementContent: "The boutique reading is based on the WanAndroid API as an interface data. Based on the Flutter framework, the App is purely a personal project practice. The source code can be downloaded on github, thank you. \n\nGiehub URL:https://github.com/wuyangyi/flutter_wan_wyy \n\nAfter registration, the user will be granted access to the account and you agree to this privacy agreement. \n\n(1) Users should not transfer or lend their account number and password to others. If they find that their account has been illegally used by others, they should contact us immediately. The Network Application R&D Center of Huazhong University of Science and Technology will strictly manage and protect the user's confidence provided by users. We will not put your important personal user information (including user account, name, contact information, etc.) without your permission. Photos, etc.) are made public or available to unrelated third parties (including companies or individuals). \n\n (2) When the user submits his resume and various related information using the APP, it indicates that you have agreed to grant the recruitment company or personnel who cooperate with the boutique reading legally permitted to the resume and its various related The right to view and use the information. We do not assume any legal responsibility for any legal dispute arising therefrom. \n\n(c), will not be liable for your privacy breach if:\n   1. You agree to let the third party share the information; \n   2. You agree to disclose your personal information and enjoy providing you with Products and services; \n   3. Boutique readings need to follow court summons, legal orders or follow legal procedures; \n   4. Accounts and passwords are illegally used by others due to hacking or negligence of the user. \n\n(4) If you have any questions or suggestions about this privacy policy, please contact us at 123456@qq.com and we will make every effort to protect your privacy. \n",
+
   },
   'zh': {
     Ids.titleHome: '主页',
@@ -116,6 +128,7 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.building: "正在建设中~",
     Ids.myCollect: "我的收藏",
     Ids.myIntegral: "我的积分",
+    Ids.integral: "积分",
     Ids.hint: "提示",
     Ids.dropOut: "是否退出游戏？",
     Ids.sure: "确定",
@@ -126,6 +139,11 @@ Map<String, Map<String, String>> localizedSimpleValues = {
     Ids.blackChess: "黑棋下棋",
     Ids.whiteChess: "白棋下棋",
     Ids.gomokuGame: "五子棋游戏",
+    Ids.integralRank: "排行",
+    Ids.integralRanking: "排行榜",
+    Ids.agreement: "产品介绍及隐私协议",
+    Ids.agreementContent: "精品阅读是以WanAndroid API为接口数据，基于Flutter框架实现的一款App，该App纯属个人项目实践，需要源码可在github上下载，谢谢。\n\nGiehub网址:https://github.com/wuyangyi/flutter_wan_wyy \n\n注册后用户将获得帐号的使用权，同时表示您同意此隐私协议。\n\n(一)、用户不应将其帐号及密码转让或出借予他人使用，如发现其帐号遭他人非法使用，应立即联系我们。华中科技大学网络应用研发中心将对用户所提供的用户信心进行严格的管理及保护，在未得到您的许可之前，我们不会把您重要的个人用户资料(包括用户账号、姓名、联系方式、照片等)对外公开或提供给无关的第三方(包括公司或个人)。\n\n(二)、当用户使用APP提交自己的简历及其各种相关信息时，表示您已经同意授予与精品阅读合作的招聘企业或人员法律上许可的对该简历及其各种相关信息进行查看及使用的权利。对于因此而引起的任何法律纠纷，我们不承担任何法律责任。\n\n(三)、在如下情况下，将不对您的隐私泄露承担责任：\n   1. 您同意让第三方共享资料；\n   2. 您同意公开你的个人资料，享受为您提供的产品和服务；\n   3. 精品阅读需要听从法庭传票、法律命令或遵循法律程序；\n   4. 因黑客行为或用户的保管疏忽导致帐号、密码遭他人非法使用。\n\n(四)、如果您对此隐私政策有任何疑问或建议，请通过以下方式联系我们:123456@qq.com，我们会尽一切努力保护您的隐私。\n",
+
   },
 };
 //
@@ -263,3 +281,8 @@ Map<String, Map<String, String>> localizedSimpleValues = {
 //    }
 //  }
 //};
+
+
+class EventBusId {
+  static const String USER_CENTER_OPACITY = "user_center_opacity";
+}

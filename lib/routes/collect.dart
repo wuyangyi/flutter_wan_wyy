@@ -4,12 +4,12 @@ import 'package:flutter_wan_wyy/blocs/user_bloc.dart';
 import 'package:flutter_wan_wyy/models/project.dart';
 import 'package:flutter_wan_wyy/res/strings.dart';
 import 'package:flutter_wan_wyy/routes/project.dart';
+import 'package:flutter_wan_wyy/utils/intl_util.dart';
 import 'package:flutter_wan_wyy/utils/utils.dart';
 import 'package:flutter_wan_wyy/widgets/refresh_scaffold.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rxdart/rxdart.dart';
 
-bool isCollectInit = true;
 // ignore: must_be_immutable
 class CollectRoute extends StatefulWidget{
   String labelId;
@@ -52,30 +52,33 @@ class CollectRouteState extends State<CollectRoute> {
         }
       }
     });
-    if (isCollectInit) {
-      isCollectInit = false;
-      Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
-        bloc.onRefresh(labelId: labelId);
-      });
-    }
+    Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
+      bloc.onRefresh(labelId: labelId);
+    });
     return StreamBuilder (
       stream: bloc.collectStream,
       builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
-        return RefreshScaffold(
-          labelId: labelId,
-          loadStatus: Util.getLoadStatus(snapshot.hasError, snapshot.data),
-          controller: _controller,
-          onRefresh: ({bool isReload}) {
-            return bloc.onRefresh(labelId: labelId);
-          },
-          onLoadMore: (up) {
-            bloc.onLoadMore(labelId: labelId);
-          },
-          itemCount: snapshot.data == null ? 0 : snapshot.data.length,
-          itemBuilder: (BuildContext context, int index) {
-            Project project = snapshot.data[index];
-            return new ProjectItem(project);
-          },
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(IntlUtil.getString(context, Ids.myCollect)),
+            centerTitle: true,
+          ),
+          body: RefreshScaffold(
+            labelId: labelId,
+            loadStatus: Util.getLoadStatus(snapshot.hasError, snapshot.data),
+            controller: _controller,
+            onRefresh: ({bool isReload}) {
+              return bloc.onRefresh(labelId: labelId);
+            },
+            onLoadMore: (up) {
+              bloc.onLoadMore(labelId: labelId);
+            },
+            itemCount: snapshot.data == null ? 0 : snapshot.data.length,
+            itemBuilder: (BuildContext context, int index) {
+              Project project = snapshot.data[index];
+              return new ProjectItem(project);
+            },
+          ),
         );
       },
     );

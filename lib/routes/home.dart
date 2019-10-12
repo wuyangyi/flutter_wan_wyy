@@ -202,11 +202,11 @@ class MyDrawer extends StatelessWidget {
               title: Text(gm.setting),
               onTap: () => Navigator.pushNamed(context, "setting"),
             ),
-//            ListTile(
-//              leading: const Icon(Icons.collections),
-//              title: Text(gm.collect),
-//              onTap: () => Navigator.pushNamed(context, Ids.collect),
-//            ),
+            ListTile(
+              leading: const Icon(Icons.collections),
+              title: Text(gm.collect),
+              onTap: () => NavigatorUtil.pushPage(context, Ids.collect, needLogin: true),
+            ),
             ListTile(
               leading: const Icon(Icons.error_outline),
               title: Text(gm.about),

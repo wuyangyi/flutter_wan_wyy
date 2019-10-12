@@ -19,6 +19,7 @@ import 'about_us.dart';
 import 'chess.dart';
 import 'collect.dart';
 import 'home.dart';
+import 'integral_rank.dart';
 import 'language.dart';
 import 'login.dart';
 
@@ -83,9 +84,10 @@ class MyApp extends StatelessWidget {
               "language": (context) => LanguageRoute(), ///语言
               "aboutUs": (context) => AboutUsRoute(), ///关于
               Ids.userAgreement: (context) => UserAgreementRoute(), ///用户协议
-//              Ids.collect: (context) => CollectRoute(), //收藏
+              Ids.collect: (context) => BlocProvider(child: CollectRoute(Ids.myCollect), bloc: UserBloc(),),  //收藏
               Ids.userCenter: (context) => BlocProvider(child: UserCenterRoute(), bloc: UserBloc(),), //用户中心
               Ids.gomokuGame: (context) => ChessPage(), //五指棋游戏
+              Ids.integralRanking: (context) => BlocProvider(child: IntegralRankRoute(), bloc: UserBloc(),), //排行榜
             },
           );
         },
