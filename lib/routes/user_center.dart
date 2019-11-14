@@ -52,6 +52,13 @@ class UserCenterRouteState extends State<UserCenterRoute> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     color = Theme.of(context).primaryColor;
     userModel = Provider.of<UserModel>(context);
